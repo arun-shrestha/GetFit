@@ -18,12 +18,13 @@ group :development,:test do
 	gem 'guard-rails'
 	gem 'guard-livereload'
 	gem 'guard-bundler'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
 group :test do
-	gem 'selenium-webdriver', '~> 2.42.0'
+
 	gem 'capybara', '~> 2.3.0'
 	gem 'factory_girl_rails'
 	gem 'faker'
@@ -77,6 +78,7 @@ gem 'elastic-beanstalk'
 gem 'font-awesome-rails' # Font-awesome icon
 gem 'mail_form' #Forms, mail
 gem 'simple_form' #Forms, mail
+gem 'friendly_id'
 
 gem 'pg'
 gem 'bootstrap-sass'
@@ -98,7 +100,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 group :production do
-	gem 'pg'
 	gem 'rails_12factor'
 end
 group :development do
