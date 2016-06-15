@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'products/edit'
+
+  get 'products/index'
+
+  get 'products/new'
+
+  get 'products/show'
+
   devise_for :admin_users
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
