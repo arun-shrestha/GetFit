@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'guests/new'
+
   get 'carts/edit'
 
   get 'carts/show'
