@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'categories/edit'
+
+  get 'categories/index'
+
+  get 'categories/new'
+
+  get 'categories/show'
+
   get 'products/edit'
 
   get 'products/index'
@@ -36,6 +44,7 @@ Rails.application.routes.draw do
   #     end
   #   end
 resources :addresses
+root "products#index"
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
