@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  get 'categories/edit'
+  # get 'categories/edit'
 
-  get 'categories/index'
+  # get 'categories/index'
 
-  get 'categories/new'
+  # get 'categories/new'
 
-  get 'categories/show'
+  # get 'categories/show'
 
-  get 'products/edit'
+  # get 'products/edit'
 
-  get 'products/index'
+  # get 'products/index'
 
-  get 'products/new'
+  # get 'products/new'
 
-  get 'products/show'
+  # get 'products/show'
 
   devise_for :admin_users
   devise_for :users
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   #     end
   #   end
 resources :addresses
+resources :categories
 root "products#index"
   # Example resource route with sub-resources:
   #   resources :products do

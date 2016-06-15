@@ -1,0 +1,16 @@
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <label class="file" for="category_cover">
+      <input type="file" name="category[cover]" id="category_cover">
+      <span class="file-custom"></span>
+    </label> 
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

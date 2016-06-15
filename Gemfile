@@ -80,6 +80,7 @@ gem 'mail_form' #Forms, mail
 gem 'simple_form' #Forms, mail
 gem 'friendly_id'
 
+gem 'protected_attributes'
 gem 'pg'
 gem 'bootstrap-sass'
 gem 'sprockets'

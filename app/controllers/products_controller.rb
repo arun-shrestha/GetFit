@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.by_category(params[:category_id])
-                       .text_search(params[:query])
-                       .by_price_range(session[:min], session[:max])
-                       .sort_by(session[:sort_by])
+    @products = Product.all
+    
+    # .by_category(params[:category_id])
+    #                    .text_search(params[:query])
+    #                    .by_price_range(session[:min], session[:max])
+    #                    .sort_by(session[:sort_by])
   end
 
   # GET /products/1
