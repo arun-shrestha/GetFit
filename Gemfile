@@ -53,6 +53,7 @@ gem 'shoulda'
 gem 'date_validator'
 gem 'foreigner'
 gem 'will_paginate'
+gem 'bootstrap'
 gem 'will_paginate-bootstrap'
 gem 'searchkick'
 gem 'money'
@@ -75,6 +76,7 @@ gem 'mini_magick'
 gem 'responders'
 gem 'devise' # User management
 gem 'elastic-beanstalk'
+gem 'font-awesome-sass', '~> 4.6.2'
 gem 'font-awesome-rails' # Font-awesome icon
 gem 'mail_form' #Forms, mail
 gem 'simple_form' #Forms, mail
@@ -82,7 +84,6 @@ gem 'friendly_id'
 
 gem 'protected_attributes'
 gem 'pg'
-gem 'bootstrap-sass'
 gem 'sprockets'
 gem 'bcrypt'
 

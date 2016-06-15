@@ -1,2 +1,19 @@
-<h1>Welcome to GetFit Store</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class='container'>
+  <%= render 'search_bar' %>
+  <div class='row'>
+    <div class='span3'>
+      <%= render 'navigation' %>
+    </div>
+    <div class='span9'>
+      <% if @products.length == 0 %>
+        <div class='alert alert-block'>No Products</div>
+      <% else %>
+        <ul class="thumbnails">
+          <% @products.each do |product| %>
+            <%= render product %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
