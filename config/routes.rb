@@ -1,91 +1,40 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-
-  get 'orders/show'
-
-  get 'home/index'
+ 
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'guests/new'
-
-  get 'carts/edit'
-
-  get 'carts/show'
-
-  get 'carts/update'
-
-  # get 'categories/edit'
-
-  # get 'categories/index'
-
-  # get 'categories/new'
-
-  # get 'categories/show'
-
-  # get 'products/edit'
-
-  # get 'products/index'
-
-  # get 'products/new'
-
-  # get 'products/show'
-
+ 
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-resources :addresses
-resources :categories
-root "products#index"
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :cart do 
+    resources :users do 
+      resources :addresses, only: [:index]
+    end
+  end
+  
+  resources :categories, only: [:index] do
+    resources :products, only: [:index, :show]
+  end
+  
+  resources :products do 
+    resources :items, only: [:create]
+  end
+  
+  resources :orders do 
+    get ":id/status/:status", action: :show, as: :status, on: :collection
+  end
+  
+  resources :carts do
+    resources :addresses, only: [:new, :create]
+  end
+  
+  resources :items
+  resources :addresses
+  resources :users do
+    resources :orders
+    resources :addresses
+  end
+  
+  resources :guests, only: [:new, :create, :update]
+  
+  root to: 'home#index'
 end
