@@ -82,6 +82,7 @@ gem 'mail_form' #Forms, mail
 gem 'simple_form' #Forms, mail
 gem 'friendly_id'
 
+gem 'activeadmin', github: 'activeadmin'
 gem 'protected_attributes'
 gem 'pg'
 gem 'sprockets'
