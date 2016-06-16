@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'orders/index'
+
+  get 'orders/show'
+
+  get 'home/index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'guests/new'

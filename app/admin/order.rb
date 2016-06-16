@@ -1,17 +1,30 @@
 ActiveAdmin.register Order do
+  config.per_page = 20
+  scope :only_completed, default: true
+  scope :only_cart
+  scope :only_shipping
+  scope :only_cancel
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  index do
+    column "User email" do |order|
+      order.address.email rescue ""
+    end
+    column "Address" do |order|
+      order.address
+    end
+    column("Status") do |order|
+      case order.state
+        when "cart"      then status_tag(order.state)
+        when "purchased" then status_tag(order.state, :ok)
+        when "canceled"  then status_tag(order.state, :error)
+        when "shipped"  then status_tag(order.state, :ok)
+      end
+    end
+    column("Balance") do |order|
+      order.balance
+    end
+    default_actions
+  end
 
-
+  form partial: 'form'
 end

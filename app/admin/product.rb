@@ -1,17 +1,19 @@
 ActiveAdmin.register Product do
+  belongs_to :category
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  before_filter do
+    @category = Category.where(slug: params[:category_id]).first!
+  end
 
-
+  show title: :name do 
+    attributes_table do 
+      row :name
+      row :description
+      row :quantity
+      row :price
+      row "Cover" do |product|
+        image_tag(product.cover.thumb)
+      end
+    end
+  end
 end

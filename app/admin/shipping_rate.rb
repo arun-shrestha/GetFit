@@ -1,17 +1,28 @@
 ActiveAdmin.register ShippingRate do
+  action_item do
+    link_to "Add country", new_admin_shipping_rate_country_path(shipping_rate) if action_name == 'show'
+  end
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+   index do
+    column :name
+    column :rate
+    default_actions
+  end
 
+  show title: :name do 
+    attributes_table do 
+      row :name
+      row :rate
+    end
 
+    panel "Countries" do 
+      table_for shipping_rate.countries do
+        column :name do |country|
+          link_to country.name, admin_shipping_rate_country_path(shipping_rate, country)
+        end
+      end
+    end
+  end
+
+  form partial: 'form'
 end
